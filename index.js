@@ -10,7 +10,7 @@ const kwhPorCasa = {
 
 // Calcula o total de consumo pelas casas
 const totalConsumoKwhPorCasa = Object.values(kwhPorCasa).reduce((acc, current) => acc + current, 0);
-console.log("f3")
+
 // Determina a diferença entre o total de kWh faturado e o consumo reportado pelas casas
 const diferencaKwh = totalKwh - totalConsumoKwhPorCasa;
 
