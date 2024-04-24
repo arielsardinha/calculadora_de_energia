@@ -1,4 +1,3 @@
-console.log("F1");
 const totalKwh = 807;
 const totalPrecoFatura = 808.46;
 const precoKwh = totalPrecoFatura / totalKwh;
