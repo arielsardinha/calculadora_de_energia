@@ -1,7 +1,7 @@
 const totalKwh = 807;
 const totalPrecoFatura = 808.46;
 const precoKwh = totalPrecoFatura / totalKwh;
-
+console.log("foi")
 const kwhPorCasa = {
     Adriana: 372.7,
     Rosana: 125.1,
