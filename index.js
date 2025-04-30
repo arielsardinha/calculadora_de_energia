@@ -1,17 +1,17 @@
-const TOTAL_KWH = 613;
-const TOTAL_PRECO_FATURA = 636.13;
+const TOTAL_KWH = 659;
+const TOTAL_PRECO_FATURA = 675.99;
 const PRECO_KWH = TOTAL_PRECO_FATURA / TOTAL_KWH;
 
 const CONSUMO_MES_ANTERIOR = {
-    Adriana: 2625.0,
-    Rosana: 1134.9,
-    Janete: 3105.2,
+    Adriana: 3087.5,
+    Rosana: 1345.7,
+    Janete: 3884.9,
 };
 
 const CONSUMO_MES_ATUAL = {
-    Adriana: 2822.8,
-    Rosana: 1219.9,
-    Janete: 3393.5,
+    Adriana: 3265.4,
+    Rosana: 1441.1,
+    Janete: 4219.4,
 };
 
 function calcularConsumoPorCasa(consumoAnterior, consumoAtual) {
