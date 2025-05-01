@@ -5,6 +5,9 @@
   "scripts": {
     "start": "npx ts-node ./src/index.ts",
     "test": "jest",
+    "docker:sonar:create": "docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest",
+    "docker:sonar:up": "docker start sonarqube",
+    "docker:sonar:analyse": "npx jest --coverage && docker run --rm --link sonarqube -e SONAR_HOST_URL=\"http://sonarqube:9000\" -v \"$(pwd):/usr/src\" sonarsource/sonar-scanner-cli",
     "test:coverage": "jest --coverage"
   },
   "repository": {
