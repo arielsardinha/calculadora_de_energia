@@ -14,8 +14,8 @@ const CONSUMO_MES_ATUAL = {
     Janete: 4219.4,
 };
 
-function calcularConsumoPorCasa(consumoAnterior, consumoAtual) {
-    return Object.keys(consumoAtual).reduce((acc, casa) => {
+function calcularConsumoPorCasa(consumoAnterior: any, consumoAtual: any) {
+    return Object.keys(consumoAtual).reduce((acc: any, casa) => {
         acc[casa] = consumoAtual[casa] - consumoAnterior[casa];
         return acc;
     }, {});
@@ -27,16 +27,16 @@ const totalKwhConsumido = Object.keys(kwhPorCasa).reduce((cc, casa) => kwhPorCas
 
 const valorConsumido = totalKwhConsumido * PRECO_KWH;
 
-function calcularTotalConsumo(kwhPorCasa) {
-    return Object.values(kwhPorCasa).reduce((acc, current) => acc + current, 0);
+function calcularTotalConsumo(kwhPorCasa: any): any {
+    return Object.values(kwhPorCasa).reduce((acc: any, current) => acc + current, 0);
 }
 
 const totalConsumoKwhPorCasa = calcularTotalConsumo(kwhPorCasa);
 const diferencaKwh = TOTAL_KWH - totalConsumoKwhPorCasa;
 const valorDiferenca = diferencaKwh * PRECO_KWH;
 
-function calcularPrecoPorCasa(kwhPorCasa, totalConsumoKwhPorCasa, valorDiferenca, precoKwh) {
-    return Object.entries(kwhPorCasa).reduce((acc, [nome, kwh]) => {
+function calcularPrecoPorCasa(kwhPorCasa: any, totalConsumoKwhPorCasa: any, valorDiferenca: any, precoKwh: any) {
+    return Object.entries(kwhPorCasa).reduce((acc: any, [nome, kwh]: any[]) => {
         const percentualConsumo = kwh / totalConsumoKwhPorCasa;
         const ajusteValor = percentualConsumo * valorDiferenca;
         acc[nome] = (kwh * precoKwh) + ajusteValor;
@@ -46,15 +46,15 @@ function calcularPrecoPorCasa(kwhPorCasa, totalConsumoKwhPorCasa, valorDiferenca
 
 const precoPorCasa = calcularPrecoPorCasa(kwhPorCasa, totalConsumoKwhPorCasa, valorDiferenca, PRECO_KWH);
 
-function converterMoeda(value) {
+function converterMoeda(value: any) {
     return value.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 }
 
-function arredondarValor(valor) {
+function arredondarValor(valor: any) {
     return parseFloat(valor.toFixed(2));
 }
 
-function imprimirRelatorio(kwhPorCasa, totalKwh, totalPrecoFatura, precoKwh, valorDiferenca, precoPorCasa, totalKwhConsumido, valorConsumido) {
+function imprimirRelatorio(kwhPorCasa: any, totalKwh: any, totalPrecoFatura: any, precoKwh: any, valorDiferenca: any, precoPorCasa: any, totalKwhConsumido: any, valorConsumido: any) {
     console.log(`Resumo Geral de Consumo e Custos de Energia`);
     console.log(`- kWh Consumidos light: ${totalKwh} kWh`);
     console.log(`- Valor Total da Fatura: ${converterMoeda(totalPrecoFatura)}`);
@@ -75,7 +75,7 @@ function imprimirRelatorio(kwhPorCasa, totalKwh, totalPrecoFatura, precoKwh, val
         console.log(`- Residência de ${nome}: ${arredondarValor(kwhPorCasa[nome])} kWh, Custo: ${converterMoeda(preco)}`);
     });
 
-    const precoTotalRecolhido = Object.values(precoPorCasa).reduce((acc, current) => acc + current, 0);
+    const precoTotalRecolhido: any = Object.values(precoPorCasa).reduce((acc: any, current) => acc + current, 0);
     console.log(`\nTotalização:`);
     console.log(`- Valor Total Recolhido das Residências: ${converterMoeda(precoTotalRecolhido)}`);
 
