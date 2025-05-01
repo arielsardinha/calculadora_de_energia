@@ -1,20 +1,25 @@
-const TOTAL_KWH = 659;
+export const TOTAL_KWH = 659;
 const TOTAL_PRECO_FATURA = 675.99;
-const PRECO_KWH = TOTAL_PRECO_FATURA / TOTAL_KWH;
 
-const CONSUMO_MES_ANTERIOR = {
+export function calcPrecoKWH(TOTAL_PRECO_FATURA: any, TOTAL_KWH: any) {
+    return TOTAL_PRECO_FATURA / TOTAL_KWH;
+}
+
+export const PRECO_KWH = calcPrecoKWH(TOTAL_PRECO_FATURA, TOTAL_KWH);
+
+export const CONSUMO_MES_ANTERIOR = {
     Adriana: 3087.5,
     Rosana: 1345.7,
     Janete: 3884.9,
 };
 
-const CONSUMO_MES_ATUAL = {
+export const CONSUMO_MES_ATUAL = {
     Adriana: 3265.4,
     Rosana: 1441.1,
     Janete: 4219.4,
 };
 
-function calcularConsumoPorCasa(consumoAnterior: any, consumoAtual: any) {
+export function calcularConsumoPorCasa(consumoAnterior: any, consumoAtual: any) {
     return Object.keys(consumoAtual).reduce((acc: any, casa) => {
         acc[casa] = consumoAtual[casa] - consumoAnterior[casa];
         return acc;
@@ -27,15 +32,21 @@ const totalKwhConsumido = Object.keys(kwhPorCasa).reduce((cc, casa) => kwhPorCas
 
 const valorConsumido = totalKwhConsumido * PRECO_KWH;
 
-function calcularTotalConsumo(kwhPorCasa: any): any {
+export function calcularTotalConsumo(kwhPorCasa: any): any {
     return Object.values(kwhPorCasa).reduce((acc: any, current) => acc + current, 0);
 }
 
 const totalConsumoKwhPorCasa = calcularTotalConsumo(kwhPorCasa);
-const diferencaKwh = TOTAL_KWH - totalConsumoKwhPorCasa;
-const valorDiferenca = diferencaKwh * PRECO_KWH;
 
-function calcularPrecoPorCasa(kwhPorCasa: any, totalConsumoKwhPorCasa: any, valorDiferenca: any, precoKwh: any) {
+export function calcValorDiferenca(totalConsumoKwhPorCasa: any) {
+    const diferencaKwh = TOTAL_KWH - totalConsumoKwhPorCasa;
+    const valorDiferenca = diferencaKwh * PRECO_KWH;
+    return valorDiferenca;
+}
+
+const valorDiferenca = calcValorDiferenca(totalConsumoKwhPorCasa);
+
+export function calcularPrecoPorCasa(kwhPorCasa: any, totalConsumoKwhPorCasa: any, valorDiferenca: any, precoKwh: any) {
     return Object.entries(kwhPorCasa).reduce((acc: any, [nome, kwh]: any[]) => {
         const percentualConsumo = kwh / totalConsumoKwhPorCasa;
         const ajusteValor = percentualConsumo * valorDiferenca;
