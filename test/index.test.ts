@@ -1,4 +1,4 @@
-import { calcPrecoKWH, calcularConsumoPorCasa, calcularPrecoPorCasa, calcularTotalConsumo, calcValorDiferenca, PRECO_KWH } from "../src"
+import { calcPrecoKWH, calcularConsumoPorCasa, calcularPrecoPorCasa, calcularTotalConsumo, calcValorDiferenca } from "../src"
 
 
 test("Deve calcular o preço por casa", () => {
