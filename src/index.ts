@@ -1,5 +1,5 @@
-export const TOTAL_KWH = 864;
-const TOTAL_PRECO_FATURA = 816.37;
+export const TOTAL_KWH = 635;
+const TOTAL_PRECO_FATURA = 642.47;
 
 export function calcPrecoKWH(TOTAL_PRECO_FATURA: any, TOTAL_KWH: any) {
     return TOTAL_PRECO_FATURA / TOTAL_KWH;
@@ -8,15 +8,15 @@ export function calcPrecoKWH(TOTAL_PRECO_FATURA: any, TOTAL_KWH: any) {
 export const PRECO_KWH = calcPrecoKWH(TOTAL_PRECO_FATURA, TOTAL_KWH);
 
 export const CONSUMO_MES_ANTERIOR = {
-    Adriana: 4987.7,
-    Rosana: 2190.8,
-    Janete: 6595.7,
+    Adriana: 5800.1,
+    Rosana: 2541.2,
+    Janete: 7591.9,
 };
 
 export const CONSUMO_MES_ATUAL = {
-    Adriana: 5290.1,
-    Rosana: 2327.3,
-    Janete: 7016.6,
+    Adriana: 5929.1,
+    Rosana: 2635.1,
+    Janete: 7921.2,
 };
 
 export function calcularConsumoPorCasa(consumoAnterior: any, consumoAtual: any) {
@@ -38,13 +38,13 @@ export function calcularTotalConsumo(kwhPorCasa: any): any {
 
 const totalConsumoKwhPorCasa = calcularTotalConsumo(kwhPorCasa);
 
-export function calcValorDiferenca(totalConsumoKwhPorCasa: any) {
-    const diferencaKwh = TOTAL_KWH - totalConsumoKwhPorCasa;
-    const valorDiferenca = diferencaKwh * PRECO_KWH;
+export function calcValorDiferenca(totalConsumoKwhPorCasa: any, totalKwh: any, precoKwh: any) {
+    const diferencaKwh = totalKwh - totalConsumoKwhPorCasa;
+    const valorDiferenca = diferencaKwh * precoKwh;
     return valorDiferenca;
 }
 
-const valorDiferenca = calcValorDiferenca(totalConsumoKwhPorCasa);
+const valorDiferenca = calcValorDiferenca(totalConsumoKwhPorCasa, TOTAL_KWH, PRECO_KWH);
 
 export function calcularPrecoPorCasa(kwhPorCasa: any, totalConsumoKwhPorCasa: any, valorDiferenca: any, precoKwh: any) {
     return Object.entries(kwhPorCasa).reduce((acc: any, [nome, kwh]: any[]) => {

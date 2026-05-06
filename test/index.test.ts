@@ -20,10 +20,10 @@ test("Deve calcular o preço por casa", () => {
     
     const kwhPorCasa = calcularConsumoPorCasa(CONSUMO_MES_ANTERIOR, CONSUMO_MES_ATUAL);
     const totalConsumoKwhPorCasa = calcularTotalConsumo(kwhPorCasa);
-    const valorDiferenca = calcValorDiferenca(totalConsumoKwhPorCasa)
     const preco_kwh = calcPrecoKWH(TOTAL_PRECO_FATURA, TOTAL_KWH);
+    const valorDiferenca = calcValorDiferenca(totalConsumoKwhPorCasa, TOTAL_KWH, preco_kwh)
     const precoPorCasa = calcularPrecoPorCasa(kwhPorCasa, totalConsumoKwhPorCasa, valorDiferenca, preco_kwh);
-    expect(precoPorCasa.Adriana).toBe(176.09597652152704)
-    expect(precoPorCasa.Rosana).toBe(94.43258100142579)
-    expect(precoPorCasa.Janete).toBe(331.10794910877286)
+    expect(precoPorCasa.Adriana).toBe(197.85886969397856)
+    expect(precoPorCasa.Rosana).toBe(106.10307008884496)
+    expect(precoPorCasa.Janete).toBe(372.0280602171766)
 })
