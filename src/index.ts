@@ -1,5 +1,5 @@
-export const TOTAL_KWH = 635;
-const TOTAL_PRECO_FATURA = 642.47;
+export const TOTAL_KWH = 406;
+const TOTAL_PRECO_FATURA = 481.17;
 
 export function calcPrecoKWH(TOTAL_PRECO_FATURA: any, TOTAL_KWH: any) {
     return TOTAL_PRECO_FATURA / TOTAL_KWH;
@@ -8,15 +8,15 @@ export function calcPrecoKWH(TOTAL_PRECO_FATURA: any, TOTAL_KWH: any) {
 export const PRECO_KWH = calcPrecoKWH(TOTAL_PRECO_FATURA, TOTAL_KWH);
 
 export const CONSUMO_MES_ANTERIOR = {
-    Adriana: 5800.1,
-    Rosana: 2541.2,
-    Janete: 7591.9,
+    Adriana: 6059.0,
+    Rosana: 2764.1,
+    Janete: 8185.1,
 };
 
 export const CONSUMO_MES_ATUAL = {
-    Adriana: 5929.1,
-    Rosana: 2635.1,
-    Janete: 7921.2,
+    Adriana: 6141.4,
+    Rosana: 2841.3,
+    Janete: 8449.5,
 };
 
 export function calcularConsumoPorCasa(consumoAnterior: any, consumoAtual: any) {
